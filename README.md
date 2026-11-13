@@ -1,32 +1,29 @@
 # CartoonCam - simple version
 
-Real-time cartoon filter for your webcam on an NVIDIA GPU, usable as a camera in
-Google Meet, plus a CPU vs CUDA vs cuDNN performance comparison.
+Real-time cartoon filter for your webcam on an NVIDIA GPU, usable as a live filter in
+Google Meet
 
 ## Files
-| File | What it is |
-|---|---|
-| `cartoon.cu` | the live cartoon camera (CUDA): webcam -> GPU filter -> window + virtual camera |
-| `benchmark.cu` | the same filter written for CPU, CUDA and cuDNN, timed and compared |
-| `setup_vcam.sh` | creates the virtual camera "CartoonCam" (/dev/video10) |
-| `run.sh` | one script to build and run everything |
+| File | Description |
 
-## Needs (once)
+| `cartoon.cu` | the live cartoon camera |
+| `benchmark.cu` | comparison file for CPU, CUDA and cuDNN|
+| `setup_vcam.sh` | creates the virtual camera "CartoonCam" |
+| `run.sh` | run file |
+
+## Initial Setup
 ```bash
 sudo apt install build-essential libopencv-dev v4l2loopback-dkms v4l-utils
-sudo apt install cudnn9-cuda-13        # for the benchmark (use cudnn9-cuda-12 on CUDA 12)
-```
-plus the NVIDIA driver and CUDA toolkit (`nvcc --version` must work).
+sudo apt install cudnn9-cuda-13       
 
 ## Use
 ```bash
-./run.sh build          # once
-./run.sh camera         # cartoon window
-./run.sh meet           # then pick "CartoonCam" in Google Meet (Chrome)
+./run.sh build          
+./run.sh camera         
+./run.sh meet           
 ./run.sh benchmark      # performance comparison
 ```
 Keys in the cartoon window: `+ -` colours, `] [` outlines, `. ,` smoothing, `h` hide text, `q` quit.
-To change the starting look, edit `struct Settings` at the top of `cartoon.cu` and run `./run.sh build`.
 
 ## Benchmark results
 `./run.sh benchmark` prints a table and saves to `results/`:
@@ -34,7 +31,3 @@ To change the starting look, edit `struct Settings` at the top of `cartoon.cu` a
 - `results.csv` - the same numbers for a spreadsheet
 - `chart.png` - bar chart of the times
 - `outputs.png` - input, CPU, CUDA and cuDNN results side by side
-
-The benchmark filter is Gaussian blur -> Sobel edges -> 4 colours + outlines.
-It uses a Gaussian blur instead of the camera's bilateral filter because cuDNN can only
-run fixed-weight convolutions; the bilateral filter changes its weights for every pixel.
