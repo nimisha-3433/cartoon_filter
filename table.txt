@@ -1,0 +1,9 @@
+GPU: NVIDIA GeForce GTX 1650   |   cuDNN 92700   |   filter: 9x9 blur + Sobel + 4 colour levels
+
+       |       CPU | CUDA  kernels / total  | cuDNN kernels / total  | speed-up vs CPU | matches CPU
+-------+-----------+------------------------+------------------------+-----------------+------------------
+480p   |  130.3 ms |   0.85 /   1.28 ms      |   1.24 /   1.74 ms      |   101x /    75x  | 100.0% / 100.0%
+720p   |  297.3 ms |   1.76 /   2.81 ms      |   2.29 /   3.42 ms      |   106x /    87x  | 100.0% / 100.0%
+1080p  |  667.4 ms |   3.80 /   6.23 ms      |   5.34 /   7.78 ms      |   107x /    86x  | 100.0% / 100.0%
+
+

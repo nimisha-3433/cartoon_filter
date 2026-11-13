@@ -1,0 +1,4 @@
+resolution,cpu_ms,cuda_kernels_ms,cuda_total_ms,cudnn_kernels_ms,cudnn_total_ms,cuda_match_pct,cudnn_match_pct
+480p,130.307,0.8515,1.2846,1.2413,1.7355,100.00,100.00
+720p,297.305,1.7592,2.8147,2.2877,3.4215,100.00,100.00
+1080p,667.354,3.7951,6.2349,5.3353,7.7753,100.00,100.00
