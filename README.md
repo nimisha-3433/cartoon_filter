@@ -1,4 +1,4 @@
-# CartoonCam - simple version
+# CartoonCam
 
 Real-time cartoon filter for your webcam on an NVIDIA GPU, usable as a live filter in
 Google Meet
